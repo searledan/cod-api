@@ -1,1 +1,1 @@
-# cod-api
+# CoD API
