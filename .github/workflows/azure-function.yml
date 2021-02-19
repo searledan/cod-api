@@ -30,7 +30,6 @@ jobs:
         npm run test --if-present
         popd
 
-jobs:
   login:
     runs-on: windows-latest  
     
@@ -40,7 +39,6 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-jobs:
   deploy:
     runs-on: windows-latest
     
