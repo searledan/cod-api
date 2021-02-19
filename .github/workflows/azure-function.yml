@@ -30,10 +30,6 @@ jobs:
         npm run test --if-present
         popd
 
-  deploy:
-    runs-on: windows-latest
-    
-    steps:
     - name: 'Deploy Azure Function'
       uses: Azure/functions-action@v1
       id: fa
