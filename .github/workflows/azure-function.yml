@@ -41,7 +41,7 @@ jobs:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
 jobs:
-  login:
+  deploy:
     runs-on: windows-latest
     
     steps:
