@@ -9,7 +9,7 @@ env:
   NODE_VERSION: '12.x'
 
 jobs:
-  build:
+  build-and-deploy:
     runs-on: windows-latest
 
     steps:
