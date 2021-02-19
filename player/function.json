@@ -12,7 +12,7 @@
     {
       "type": "http",
       "direction": "out",
-      "name": "response1"
+      "name": "response"
     }
   ],
   "scriptFile": "../dist/player/index.js"
