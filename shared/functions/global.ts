@@ -1,3 +1,5 @@
+import { Error } from '../classes/error';
+
 const API = require('call-of-duty-api')();
 
 export async function Login(username: string, password: string) {
@@ -6,7 +8,7 @@ export async function Login(username: string, password: string) {
             await API.login(username, password);
         }
     } 
-    catch(error) {
-        throw new Error("Error logging in.");
+    catch (error) {
+        throw new Error(500, "There has been an error logging in.");
     }
 }

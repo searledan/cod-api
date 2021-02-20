@@ -1,16 +1,16 @@
 import { AzureFunction, Context, HttpRequest } from "@azure/functions"
 import { Error } from '../shared/classes/error';
-import { Player } from '../shared/interfaces/player';
+import { Warzone } from '../shared/interfaces/warzone';
 import { Login } from '../shared/functions/global';
 import { Validate } from '../shared/functions/validation';
-import { GetPlayer } from '../shared/functions/player';
+import { GetWarzoneDetails } from '../shared/functions/warzone';
 
 const httpTrigger: AzureFunction = async function (context: Context, request: HttpRequest) {
     var validationError: Error = await Validate(request);
 
     if (!validationError) {
         var loginUsername: string, loginPassword: string, username: string;
-        var loginResult: void, playerResult: Player;
+        var loginResult: void, warzoneResult: Warzone;
 
         loginUsername = (request.body && request.body.loginUsername);
         loginPassword = (request.body && request.body.loginPassword);
@@ -18,11 +18,11 @@ const httpTrigger: AzureFunction = async function (context: Context, request: Ht
         
         try {
             loginResult = await Login(loginUsername, loginPassword);
-            playerResult = await GetPlayer(username);
+            warzoneResult = await GetWarzoneDetails(username);
 
             context.res = {
                 status: 200,
-                body: playerResult
+                body: warzoneResult
             };
         }
         catch (error) {
