@@ -9,16 +9,16 @@ const httpTrigger: AzureFunction = async function (context: Context, request: Ht
     var validationError: Error = await Validate(request);
 
     if (!validationError) {
-        var loginUsername: string, loginPassword: string, username: string;
+        var loginUsername: string, ssoToken: string, playerName: string;
         var loginResult: void, playerResult: Player;
 
         loginUsername = (request.body && request.body.loginUsername);
-        loginPassword = (request.body && request.body.loginPassword);
-        username = (request.body && request.body.username);
-        
+        ssoToken = (request.body && request.body.ssoToken);
+        playerName = (request.query && request.query["name"]);
+
         try {
-            loginResult = await Login(loginUsername, loginPassword);
-            playerResult = await GetPlayer(username);
+            loginResult = await Login(loginUsername, ssoToken);
+            playerResult = await GetPlayer(playerName);
 
             context.res = {
                 status: 200,

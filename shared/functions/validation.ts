@@ -2,18 +2,22 @@ import { HttpRequest } from '@azure/functions';
 import { Error } from '../classes/error';
 
 export async function Validate(request: HttpRequest): Promise<Error> {
-    var loginUsername: string, loginPassword: string, username: string;
+    var loginUsername: string, ssoToken: string, playerName: string;
 
     loginUsername = (request.body && request.body.loginUsername);
-    loginPassword = (request.body && request.body.loginPassword);
-    username = (request.body && request.body.username);
+    ssoToken = (request.body && request.body.ssoToken);
+    playerName = (request.query && request.query["name"]);
 
-    if (!loginUsername || !loginPassword) {
-        return new Error(400, "Please pass a username & password in the request body.");
+    if (!loginUsername) {
+        return new Error(400, "Please pass a username in the request body.");
     }
 
-    if (!username) {
-        return new Error(400, "Please pass a username in the request body.");
+    if (!ssoToken) {
+        return new Error(400, "Please pass an SSO token in the request body.");
+    }
+
+    if (!playerName) {
+        return new Error(400, "Please pass a player name in the URL.");
     }
 
     return null;
