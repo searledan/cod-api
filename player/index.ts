@@ -17,7 +17,11 @@ const httpTrigger: AzureFunction = async function (context: Context, request: Ht
         playerName = (request.query && request.query["name"]);
 
         try {
-            loginResult = await Login(loginUsername, ssoToken);
+            loginResult = Login(loginUsername, ssoToken);
+
+            console.log(loginResult);
+
+        
             playerResult = await GetPlayer(playerName);
 
             context.res = {

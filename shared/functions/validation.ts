@@ -6,7 +6,7 @@ export async function Validate(request: HttpRequest): Promise<Error> {
 
     loginUsername = (request.body && request.body.loginUsername);
     ssoToken = (request.body && request.body.ssoToken);
-    playerName = (request.query && request.query["name"]);
+    playerName = (request.query && request.body.playerName);
 
     if (!loginUsername) {
         return new Error(400, "Please pass a username in the request body.");
@@ -17,7 +17,7 @@ export async function Validate(request: HttpRequest): Promise<Error> {
     }
 
     if (!playerName) {
-        return new Error(400, "Please pass a player name in the URL.");
+        return new Error(400, "Please pass a player name in the request body.");
     }
 
     return null;

@@ -10,11 +10,11 @@
     "test": "echo \"No tests yet...\""
   },
   "dependencies": {
-    "@types/node": "^14.14.30",
-    "call-of-duty-api": "^2.2.2"
+    "@types/node": "^14.18.63",
+    "call-of-duty-api": "^2.3.1"
   },
   "devDependencies": {
-    "@azure/functions": "^1.0.2-beta2",
-    "typescript": "^3.3.3"
+    "@azure/functions": "^4.1.0",
+    "typescript": "^3.9.10"
   }
 }
